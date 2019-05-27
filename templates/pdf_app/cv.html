@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Artur Kutsevol
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-dark bg-primary justify-content-center">
+        <a class="navbar-brand" href="/">Artur Kutsevol | Software Developer</a>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-8">
+            <h3><span class="badge badge-pill badge-primary">About me</span></h3>
+            <div align="justify">{{ cv.summary }}</div>
+
+            <h3><span class="badge badge-pill badge-primary">Details</span></h3>
+            Age: {{ cv.person_details.age }}
+            <br/>
+            Location: {{ cv.person_details.city }}, {{ cv.person_details.country }}
+            <br/>
+            Email: {{ cv.person_details.email }}
+
+            <h3><span class="badge badge-pill badge-primary">Experience</span></h3>
+            {% for experience in cv.experiences.all %}
+                <table>
+                    <tr>
+                        <td width="30%">
+                            <b>
+                                <a href="{{ experience.company_url }}">
+                                    {{ experience.company_name }}
+                                </a> | {{ experience.project_name }}
+                            </b>
+
+                        </td>
+
+                        <td width="70%">
+                            <b>{{ experience.position }}</b>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>{{ experience.start_date|date:"M Y" }} - {{ experience.end_date | default_if_none:"current" }}</td>
+                        <td>{{ experience.project_description }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <b>Responsibilities</b>
+                            <ul>
+                                {% for item in experience.responsibility_as_list %}
+                                    <li>{{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <b>Tools and technologies</b>
+                            <br/>
+                                {% for technology in experience.technologies.all %}
+                                    {{ technology.name }}
+                                        {% if not forloop.last %}
+                                            ,
+                                        {% endif %}
+                                {% endfor %}
+                        </td>
+                    </tr>
+                </table>
+            {% endfor %}
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    </div>
+{% endblock %}
