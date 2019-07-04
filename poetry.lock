@@ -162,7 +162,7 @@ python-versions = "*"
 version = "1.2.0"
 
 [[package]]
-category = "main"
+category = "dev"
 description = "A Python utility / library to sort Python imports."
 name = "isort"
 optional = false
@@ -246,7 +246,7 @@ python-versions = "*"
 version = "4.1.2"
 
 [metadata]
-content-hash = "97bef79ba921c15c459d3ef70278e08356c86b698b894608f61dea03165b4533"
+content-hash = "72e3bef1805aa351f961d8f23fddc6ace6bbb4add9900c6fa195f598e4504f08"
 python-versions = "^3.7"
 
 [metadata.hashes]

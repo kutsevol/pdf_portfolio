@@ -8,14 +8,14 @@ To change settings file:
 `DJANGO_ENV=production python manage.py runserver`
 """
 
-from split_settings.tools import include, optional
+from split_settings.tools import include
 
 from server.settings.components import config
 
 base_settings = [
     'components/common.py',
     'components/logging.py',
-    'components/csp.py',
+    'components/security.py',
     'components/caches.py',
 
     # You can even use glob:
@@ -24,8 +24,6 @@ base_settings = [
     # Select the right env:
     'environments/{0}.py'.format(config('DJANGO_ENV', default='development')),
 
-    # Optionally override some settings:
-    optional('environments/local.py'),
 ]
 
 # Include settings:

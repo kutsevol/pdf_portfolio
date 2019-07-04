@@ -74,6 +74,7 @@ ROOT_URLCONF = 'server.urls'
 WSGI_APPLICATION = 'server.wsgi.application'
 
 ADMIN_URL = config('ADMIN_URL', default='admin/')
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -173,26 +174,3 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
     'django.contrib.auth.hashers.Argon2PasswordHasher',
 ]
-
-
-# Security
-# https://docs.djangoproject.com/en/1.11/topics/security/
-
-SESSION_COOKIE_HTTPONLY = True
-CSRF_COOKIE_HTTPONLY = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True
-
-X_FRAME_OPTIONS = 'DENY'
-
-# https://django-referrer-policy.readthedocs.io/
-REFERRER_POLICY = 'no-referrer'
-
-# https://github.com/adamchainz/django-feature-policy
-FEATURE_POLICY = {
-    'autoplay': 'none',
-    'camera': 'none',
-    'fullscreen': 'none',
-    'geolocation': 'none',
-    'microphone': 'none',
-}
