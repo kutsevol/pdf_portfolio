@@ -1,0 +1,162 @@
+<html>
+    <head>
+        <style type="text/css">
+            @page {
+                size: letter;
+                margin: 1.5cm 2.5cm;
+            }
+            body {
+                font-family: Times-Roman, Georgia;
+                font-size: 14px;
+                font-weight: 100;
+            }
+            .header {
+                font-size: 26px;
+                font-weight: bold;
+                text-align: center;
+            }
+            td {
+                vertical-align: top;
+                padding: 5px 0;
+            }
+            li {
+                padding: 0;
+            }
+        </style>
+        <title>
+            Artur Kutsevol CV
+        </title>
+    </head>
+    <body>
+        <div class="header">
+            {{ cv.full_name }}
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <b>Personal details:</b>
+                </td>
+                <td>
+                    Phone: {{ cv.person_details.phone }}
+                    <br/>
+                    Email: {{ cv.person_details.email }}
+                    <br/>
+                    Skype: {{ cv.person_details.skype }}
+                    <br/>
+                    Place of residence: {{ cv.person_details.city }}
+                    <br/>
+                    External links:
+                    {% for social in cv.person_details.socials.all %}
+                        <a href="{{ social.link }}">{{ social.name }}</a>
+                        {% if not forloop.last %}
+                            ,
+                        {% endif %}
+                    {% endfor %}
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Objective:</b>
+                </td>
+                <td>
+                    {{ cv.objective }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Summary:</b>
+                </td>
+                <td>
+                    {{ cv.summary }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Skills:</b>
+                </td>
+                <td>
+                    <b>Languages:</b>
+                    {{ skills.Language }}
+                    <br/>
+                    <b>Frameworks:</b>
+                    {{ skills.Framework }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <b>Work experience:</b>
+                </td>
+            </tr>
+            {% for experience in cv.experiences.all|dictsortreversed:"start_date" %}
+                <tr>
+                    <td>
+                        {{ experience.start_date|date:"M Y" }} -
+                        {% if experience.end_date is None %}
+                            current
+                        {% else %}
+                            {{ experience.end_date|date:"M Y" }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <b>{{ experience.position }}</b>
+                        <br/>
+                        <a href="{{ experience.company_url }}">{{ experience.company_name }}</a>
+                        <br/>
+                        <b>Responsibility:</b>
+                        <ul>
+                            {% for item in experience.responsibility_as_list %}
+                                <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="2">
+                    <b>Education:</b>
+                </td>
+            </tr>
+            {% for education in cv.educations.all %}
+                <tr>
+                    <td>
+                        {{ education.start_date|date:"M Y" }} -
+                        {% if experience.end_date is None %}
+                            current
+                        {% else %}
+                            {{ experience.end_date|date:"M Y" }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ education.name }}
+                        <br/>
+                        {{ education.course }}
+                    </td>
+            </tr>
+            {% endfor %}
+            {% for certification in cv.certifications.all %}
+                <tr>
+                    <td>
+                        <b>Certification:</b>
+                    </td>
+                    <td>
+                        <a href="{{ certification.url }}">
+                            {{ certification.name }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>
+                    <b>Language:</b>
+                </td>
+                <td>
+                    {% for language in cv.languages.all %}
+                        <b>{{ language.name }}</b> - {{ language.level.lower }}
+                        <br>
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

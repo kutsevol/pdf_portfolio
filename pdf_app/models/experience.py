@@ -17,3 +17,6 @@ class Experience(models.Model):
 
     def responsibility_as_list(self):
         return self.responsibility.split(";")
+
+    def __str__(self):
+        return f"{self.company_name}, {self.project_name}, {self.position}"
