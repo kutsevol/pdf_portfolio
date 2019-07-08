@@ -8,3 +8,6 @@ class Certification(models.Model):
     url = models.URLField()
     cv = models.ForeignKey(CV, on_delete=models.CASCADE,
                            related_name='certifications')
+
+    def __str__(self):
+        return self.name

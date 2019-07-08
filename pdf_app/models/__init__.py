@@ -6,4 +6,3 @@ from .language import Language
 from .person_detail import PersonDetail
 from .skill import Skill
 from .social import Social
-from .technology import Technology

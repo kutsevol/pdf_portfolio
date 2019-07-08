@@ -6,3 +6,11 @@ table tr td {
     padding: 0 20px 20px 0;
     vertical-align: super;
 }
+
+.cv {
+    padding: 10px;
+}
+
+.cv a {
+    align: center;
+}
