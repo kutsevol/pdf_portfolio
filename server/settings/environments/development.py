@@ -64,7 +64,7 @@ DEBUG_TOOLBAR_PANELS = PANELS_DEFAULTS + [
 
 # This will make debug toolbar to work with django-csp,
 # since `ddt` loads some scripts from `ajax.googleapis.com`:
-CSP_SCRIPT_SRC = ("'self'", 'ajax.googleapis.com')
+CSP_SCRIPT_SRC = ("'self'", '*.cloudflare.com', 'ajax.googleapis.com',)
 CSP_IMG_SRC = ("'self'", 'data:')
 
 
