@@ -18,11 +18,11 @@ https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Content-Security-Policy
 Docs: https://github.com/mozilla/django-csp
 """
 
-CSP_SCRIPT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'", '*.cloudflare.com',)
 CSP_IMG_SRC = ("'self'",)
-CSP_FONT_SRC = ("'self'",)
-CSP_STYLE_SRC = ("'self'",)
-CSP_DEFAULT_SRC = ("'none'",)
+CSP_FONT_SRC = ("'self'", 'fonts.googleapis.com', 'fonts.gstatic.com')
+CSP_STYLE_SRC = ("'self'", 'fonts.googleapis.com')
+CSP_DEFAULT_SRC = ("'self'",)
 CSP_EXCLUDE_URL_PREFIXES = ('/admin', '/pdf')
 
 """

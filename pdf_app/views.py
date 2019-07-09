@@ -11,7 +11,12 @@ class CVView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if CV.objects.exists():
-            context["cv"] = CV.objects.get(id=1)
+            cv = CV.objects.get(id=1)
+            experiences = cv.experiences.all().prefetch_related("skills")
+            context.update({
+                "cv": cv,
+                "experiences": experiences,
+            })
         return context
 
 
@@ -19,12 +24,15 @@ class PdfView(TemplateView):
     template_name = "pdf_app/pdf.html"
 
     def get(self, *args, **kwargs):
-        cv = CV.objects.get(id=1) if CV.objects.exists() else []
-        params = {
-            "cv": cv,
-            "skills": get_all_skills_for_user(cv, value_as_str=True)
-        }
-        return render(self.template_name, params)
+        if CV.objects.exists():
+            cv = CV.objects.get(id=1) if CV.objects.exists() else []
+            experiences = cv.experiences.all().prefetch_related("skills")
+            params = {
+                "cv": cv,
+                "experiences": experiences,
+                "skills": get_all_skills_for_user(cv, value_as_str=True),
+            }
+            return render(self.template_name, params)
 
 
 cv_view = CVView.as_view()
