@@ -15,3 +15,10 @@ DB_ENGINES = {
     "sqlite": "django.db.backends.sqlite3",
     "postgres": "django.db.backends.postgresql_psycopg2",
 }
+
+DEV = "development"
+PROD = "production"
+
+ENV_LIST_NAMES = {
+    DEV, PROD,
+}
