@@ -22,10 +22,6 @@ ALLOWED_HOSTS = [
 # https://docs.djangoproject.com/en/1.11/ref/settings/#std:setting-STATICFILES_DIRS
 
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
-STATICFILES_DIRS = [
-    BASE_DIR.joinpath('static'),
-    BASE_DIR.joinpath('node_modules'),
-]
 
 # Django debug toolbar
 # django-debug-toolbar.readthedocs.io
