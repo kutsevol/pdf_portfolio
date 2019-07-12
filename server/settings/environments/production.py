@@ -20,7 +20,7 @@ ALLOWED_HOSTS = [
 # Adding STATIC_ROOT to collect static files via 'collectstatic'
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 # Mediafiles
