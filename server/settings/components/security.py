@@ -30,7 +30,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
 
 Docs: https://django-referrer-policy.readthedocs.io/
 """
-REFERRER_POLICY = 'no-referrer'
+REFERRER_POLICY = 'same-origin'
 
 """
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
