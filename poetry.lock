@@ -109,14 +109,6 @@ python-versions = "*"
 version = "2.1.0"
 
 [[package]]
-category = "main"
-description = "Recursive nesting of inline forms for Django Admin"
-name = "django-nested-inline"
-optional = false
-python-versions = "*"
-version = "0.3.7"
-
-[[package]]
 category = "dev"
 description = "Middleware that Prints the number of DB queries to the runserver console."
 name = "django-querycount"
@@ -339,7 +331,7 @@ reportlab = ">=3.0"
 six = "*"
 
 [metadata]
-content-hash = "770cef4ca82d366754ace150f2f1f8c2a0a4a14352420de1ac1b98e221f5fc32"
+content-hash = "9bf6795a5db3739803fc569a8dde801706fd92935a28a8db7147edfc1d953f7d"
 python-versions = "^3.7"
 
 [metadata.hashes]
@@ -353,7 +345,6 @@ django-csp = ["04600237701e6d6ff78ed7d41209ff923988148bf292c128f6b474b9befe444f"
 django-debug-toolbar = ["17c53cd6bf4e7d69902aedf9a1d26c5d3b7369b54c5718744704f27b5a72f35d", "9a23ada2e43cd989195db3c18710b5d7451134a0d48127ab64c1d2ad81700342"]
 django-feature-policy = ["7478abb88f20e7ad96367fd6e0468809d8250bbca52a70519702257f4e233569", "cb1f173cacaacb5ac83bd652622bc2601721d1ad21a5ad5cbc6c6989b30e8132"]
 django-ipware = ["a7c7a8fd019dbdc9c357e6e582f65034e897572fc79a7e467674efa8aef9d00b"]
-django-nested-inline = ["f879833f19d7816a00c5df2ad01e2b79e86c5485ba4ed6ee5d9c23f35710ebaf"]
 django-querycount = ["8f5123d78716ff0704f2373e746a7200b8d8417798ce4a99bf2de87e3768f9ce"]
 django-referrer-policy = ["09e134324fa08c10efc12244a4bae7aee5defa7d332b92c603b09258c854615a"]
 django-split-settings = ["04f6b551111fdbcb4f669ac9004ac2d4a27197a36ca88444cb896378807ed777", "14b164dbd724e52aa9a0b0338eefa988a8a0f17f7cba34e0f983e5348682aeb7"]
