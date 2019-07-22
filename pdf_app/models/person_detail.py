@@ -15,6 +15,7 @@ class PersonDetail(models.Model):
     cv = models.OneToOneField(CV, on_delete=models.CASCADE,
                               related_name="person_details")
 
+    @property
     def age(self):
         return datetime.now().year - self.birth_day.year
 

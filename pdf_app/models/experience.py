@@ -15,7 +15,8 @@ class Experience(models.Model):
     cv = models.ForeignKey(CV, on_delete=models.CASCADE,
                            related_name='experiences')
 
-    def responsibility_as_list(self):
+    @property
+    def responsibilities_as_list(self):
         return self.responsibility.split(";")
 
     def __str__(self):
