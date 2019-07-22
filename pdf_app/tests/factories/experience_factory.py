@@ -1,5 +1,5 @@
 from django.utils import timezone
-from factory import DjangoModelFactory, Faker, SubFactory
+from factory import DjangoModelFactory, Faker, SubFactory, post_generation
 
 from pdf_app.models import Experience
 from pdf_app.tests.factories.cv_factory import CVFactory
@@ -15,6 +15,22 @@ class ExperienceFactory(DjangoModelFactory):
     position = Faker("sentence", nb_words=3)
     responsibility = Faker("paragraph", nb_sentences=5)
     cv = SubFactory(CVFactory)
+
+    @post_generation
+    def add_skills_to_experience(self, created: bool, extracted, **kwargs):
+        """
+        To add experience for CV model.
+        :param created: if factory calls like `ExperienceFactory.build()`
+        :param extracted: if factory calls like `ExperienceFactory.create()` or
+        `ExperienceFactory()`
+        :param kwargs: other arguments
+        """
+        if not created:
+            return
+
+        if extracted:
+            for skill in extracted:
+                self.skills.add(skill)
 
     class Meta:
         model = Experience

@@ -1,3 +1,4 @@
+from random import randint
 import pytest
 
 from pdf_app.tests.factories import (CVFactory, CertificationFactory,
@@ -8,7 +9,17 @@ from pdf_app.tests.factories import (CVFactory, CertificationFactory,
 
 @pytest.fixture
 def cv():
-    return CVFactory()
+    return CVFactory(
+        add_experiences_to_cv=[
+            ExperienceFactory(
+                add_skills_to_experience=[
+                    SkillFactory()
+                    for _ in range(randint(0, 3))
+                ]
+            )
+            for _ in range(randint(0, 3))],
+
+    )
 
 
 @pytest.fixture
