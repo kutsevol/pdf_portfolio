@@ -11,8 +11,9 @@ class CV(models.Model):
         verbose_name = 'CV'
         verbose_name_plural = 'CV'
 
+    @property
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
 
     def __str__(self):
-        return self.full_name()
+        return self.full_name

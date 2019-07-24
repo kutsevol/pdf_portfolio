@@ -77,3 +77,6 @@ NPLUSONE_LOG_LEVEL = logging.WARN
 
 # Security
 CSRF_COOKIE_HTTPONLY = False
+
+# Axes
+AXES_ENABLED = False
