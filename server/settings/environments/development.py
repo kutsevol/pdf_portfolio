@@ -45,7 +45,7 @@ MIDDLEWARE += (
 
 def custom_show_toolbar(request):
     """Only show the debug toolbar to users with the superuser flag."""
-    return request.user.is_superuser
+    return True
 
 
 DEBUG_TOOLBAR_CONFIG = {
@@ -60,8 +60,8 @@ DEBUG_TOOLBAR_PANELS = PANELS_DEFAULTS + [
 
 # This will make debug toolbar to work with django-csp,
 # since `ddt` loads some scripts from `ajax.googleapis.com`:
-CSP_SCRIPT_SRC = ("'self'", '*.cloudflare.com', 'ajax.googleapis.com',)
-CSP_IMG_SRC = ("'self'", 'data:')
+CSP_SCRIPT_SRC = ("'self'", "*.cloudflare.com", "ajax.googleapis.com",)
+CSP_IMG_SRC = ("'self'", "data:")
 
 
 # nplusone

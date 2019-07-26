@@ -23,7 +23,6 @@ CSP_IMG_SRC = ("'self'",)
 CSP_FONT_SRC = ("'self'", 'fonts.googleapis.com', 'fonts.gstatic.com')
 CSP_STYLE_SRC = ("'self'", 'fonts.googleapis.com')
 CSP_DEFAULT_SRC = ("'self'",)
-CSP_EXCLUDE_URL_PREFIXES = ('/admin', '/pdf')
 
 """
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
