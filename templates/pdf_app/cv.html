@@ -5,78 +5,113 @@
 {% endblock %}
 
 {% block content %}
-    <nav class="navbar navbar-dark bg-primary justify-content-center">
-        <a class="navbar-brand" href="/">Artur Kutsevol | Software Developer</a>
-    </nav>
-    <div class="container-fluid">
+    <div class="container">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="header-nav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#nav" aria-controls="nav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="div-nav">
+                <ul class="navbar-nav nav-pills">
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#exp">Experience</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid" id="home">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-sm-3 offset-5">
+                <span id="hi-span">Hello, I'm</span>
+                <div class="bio">
+                    {# Name #}
+                    <h2>ARTUR KUTSEVOL</h2>
+                    {# Current position #}
+                    <h4>Software Engineer</h4>
+                    <ul>
+                        <li>
+                            {# Email icon #}
+                            <i class="fa fa-envelope size"></i>
+                            {# Personal email #}
+                            <span>arthur.kutsevol@gmail.com</span>
+                        </li>
+                        <li>
+                            {# Location icon #}
+                            <i class="fa fa-map-marker size"></i>
+                            {# Current location #}
+                            <span>Kyiv, Ukraine</span>
+                        </li>
+                        <li class="social-size">
+                            {# Social network - github and linkedin #}
+                            <a href="https://github.com/kutsevol"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/artur-kutsevol"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-6">
-                <h3><span class="badge badge-pill badge-primary">About me</span></h3>
+        </div>
+
+    </div>
+    <div class="container-fluid" id="about">
+        <div class="row">
+            <div class="col-sm-2 offset-2" id="about-image">
+                <img src="static/pdf_app/images/custom-productivity.jpg">
+            </div>
+            <div class="col-sm-3 offset-1">
+                <div class="about-me">
+                    <h2>About me</h2>
+                </div>
                 <div align="justify">{{ cv.summary }}</div>
-
-                <h3><span class="badge badge-pill badge-primary">Details</span></h3>
-                Age: {{ cv.person_details.age }}
-                <br/>
-                Location: {{ cv.person_details.city }}, {{ cv.person_details.country }}
-                <br/>
-                Email: {{ cv.person_details.email }}
-
-                <h3><span class="badge badge-pill badge-primary">Experience</span></h3>
-                {% for experience in experiences %}
-                    <table>
-                        <tr>
-                            <td width="30%">
-                                <b>
-                                    <a href="{{ experience.company_url }}">
-                                        {{ experience.company_name }}
-                                    </a> | {{ experience.project_name }}
-                                </b>
-
-                            </td>
-
-                            <td width="70%">
-                                <b>{{ experience.position }}</b>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>{{ experience.start_date|date:"M Y" }} - {{ experience.end_date|default_if_none:"current" }}</td>
-                            <td>{{ experience.project_description }}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <b>Responsibilities</b>
-                                <ul>
-                                    {% for item in experience.responsibility_as_list %}
-                                        <li>{{ item }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <b>Tools and technologies</b>
-                                <br/>
-                                    {% for skill in experience.skills.all %}
-                                        {{ skill.name }}
-                                            {% if not forloop.last %}
-                                                ,
-                                            {% endif %}
-                                    {% endfor %}
-                            </td>
-                        </tr>
-                    </table>
-                {% endfor %}
             </div>
-            <div class="col-md-3">
-                <div class="cv text-center">
-                    <a href="/pdf" class="btn btn-primary" role="button">
-                        see CV
-                    </a>
+        </div>
+    </div>
+    <div class="container-fluid" id="exp">
+        <div class="row">
+            <div class="col-sm-3 offset-4" id="work-exp">
+                <h4>Work Experience</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7 offset-2">
+                <div id="carouselContent" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        {% for experience in experiences %}
+                            <div class="carousel-item text-center p-4 {% if forloop.first %}active{% endif %}">
+                                <strong>
+                                    <a href="{{ experience.company_url }}">{{ experience.company_name }}</a>
+                                    | {{ experience.project_name }}
+                                </strong>
+                                <br/>
+                                <strong>{{ experience.position }}</strong>
+                                <p>{{ experience.start_date|date:"M Y" }} - {% if experience.end_date %}{{ experience.end_date|date:"M Y" }}{% else %}{{ experience.end_date|default_if_none:"current" }}{% endif %}</p>
+                                <p>{{ experience.project_description }}</p>
+                                <strong>Tools and technologies</strong>
+                                <br/>
+                                {% for skill in experience.skills.all %}
+                                    <span id="skill">{{ skill.name }}</span>
+                                        {% if not forloop.last %}
+                                            ,
+                                        {% endif %}
+                                {% endfor %}
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselContent" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselContent" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
