@@ -63,6 +63,11 @@ table tr td {
     border-style: solid;
 }
 
+#download-cv {
+    background-color: #0bceaf;
+    color: white;
+}
+
 .bio * {
     font-weight: 600;
     margin-top: 10px;
