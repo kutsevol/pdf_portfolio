@@ -21,7 +21,7 @@ Docs: https://github.com/mozilla/django-csp
 CSP_SCRIPT_SRC = ("'self'", '*.cloudflare.com',)
 CSP_IMG_SRC = ("'self'",)
 CSP_FONT_SRC = ("'self'", 'fonts.googleapis.com', 'fonts.gstatic.com')
-CSP_STYLE_SRC = ("'self'", 'fonts.googleapis.com')
+CSP_STYLE_SRC = ("'self'", 'fonts.googleapis.com', "'unsafe-inline'")
 CSP_DEFAULT_SRC = ("'self'",)
 
 """
