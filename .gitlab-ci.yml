@@ -1,0 +1,34 @@
+---
+
+image: python:latest
+
+variables:
+  DOCKER_DRIVER: overlay2
+
+services:
+  - docker:dind
+
+stages:
+    - check-reqs
+    - linter
+
+before_script:
+  - python -m venv venv
+  - source venv/bin/activate
+  - pip install poetry
+  - poetry install
+
+
+poetry-check:
+    stage: check-reqs
+    script:
+      - poetry check
+    tags:
+      - shared
+
+flake8:
+    stage: linter
+    script:
+      - invoke flake
+    tags:
+        - shared
