@@ -11,6 +11,7 @@ services:
 stages:
     - check-reqs
     - linter
+    - test
 
 before_script:
   - python -m venv venv
@@ -32,3 +33,10 @@ flake8:
       - invoke flake
     tags:
         - shared
+
+unit-tests:
+    stage: test
+    script:
+      - invoke test
+    tags:
+      - shared
