@@ -6,6 +6,7 @@ from pdf_app.tests.factories.cv_factory import CVFactory
 
 
 class EducationFactory(DjangoModelFactory):
+    """Prepare Factory for Education model."""
 
     name = Faker("word")
     course = Faker("sentence", nb_words=4)

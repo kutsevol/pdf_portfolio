@@ -30,19 +30,19 @@ MEDIA_ROOT = '/var/www/django/media'
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
-_PASS = 'django.contrib.auth.password_validation'
+MIDD_NAME = 'django.contrib.auth.password_validation'
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': '{0}.UserAttributeSimilarityValidator'.format(_PASS),
+        'NAME': f'{MIDD_NAME}.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': '{0}.MinimumLengthValidator'.format(_PASS),
+        'NAME': f'{MIDD_NAME}.MinimumLengthValidator',
     },
     {
-        'NAME': '{0}.CommonPasswordValidator'.format(_PASS),
+        'NAME': f'{MIDD_NAME}.CommonPasswordValidator',
     },
     {
-        'NAME': '{0}.NumericPasswordValidator'.format(_PASS),
+        'NAME': f'{MIDD_NAME}.NumericPasswordValidator',
     },
 ]
 

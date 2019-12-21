@@ -6,11 +6,11 @@ from pdf_app.services.render_pdf import render
 from pdf_app.services.skills import get_all_skills_for_user
 from utils.constants import BASE_DIR
 
-
 pytestmark = pytest.mark.django_db
 
 
 def test_render_service():
+    """Verify render function in service."""
     template = BASE_DIR.joinpath("templates/pdf_app/pdf.html")
     params = {}
     response = render(template, params)
@@ -21,6 +21,7 @@ def test_render_service():
 
 
 def test_get_all_skills_for_user(cv):
+    """Verify to all skills included in user profile."""
     expected_result = defaultdict(list)
 
     for exp in cv.experiences.all():

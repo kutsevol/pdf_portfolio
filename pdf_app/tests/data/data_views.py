@@ -6,8 +6,8 @@ Response = namedtuple(
     "Response",
     [
         "path", "code", "view_class", "check_template", "template_name",
-        "content_encoding", "content_body", "content_title"
-    ]
+        "content_encoding", "content_body", "content_title",
+    ],
 )
 
 Response.__doc__ = """
@@ -57,5 +57,5 @@ bulk_negative_responses = [
         content_encoding="utf-8",
         content_body="Not Found",
         content_title="Not Found",
-    )
+    ),
 ]

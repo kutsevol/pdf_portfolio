@@ -4,6 +4,7 @@ from pdf_app.models import CV
 
 
 class CVFactory(DjangoModelFactory):
+    """Prepare Factory for CV model."""
 
     first_name = Faker("first_name")
     last_name = Faker("last_name")
@@ -14,6 +15,7 @@ class CVFactory(DjangoModelFactory):
     def add_experiences_to_cv(self, created: bool, extracted, **kwargs):
         """
         To add experience for CV model.
+
         :param created: if factory calls like `CVFactory.build()`
         :param extracted: if factory calls like `CVFactory.create()` or
         `CVFactory()`

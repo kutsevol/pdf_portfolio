@@ -1,11 +1,18 @@
 from io import BytesIO
 
+import xhtml2pdf.pisa as pisa
 from django.http import HttpResponse
 from django.template.loader import get_template
-import xhtml2pdf.pisa as pisa
 
 
 def render(path, params):
+    """
+    Function to render PDF file.
+
+    :param path: to get template
+    :param params: all required params to render template
+    :return: Response with pdf file or Response with error
+    """
     template = get_template(path)
     html = template.render(params)
 

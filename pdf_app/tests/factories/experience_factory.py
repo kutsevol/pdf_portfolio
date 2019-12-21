@@ -6,6 +6,8 @@ from pdf_app.tests.factories.cv_factory import CVFactory
 
 
 class ExperienceFactory(DjangoModelFactory):
+    """Prepare Factory for Experience model."""
+
     company_name = Faker("word")
     company_url = Faker("url")
     project_name = Faker("word")
@@ -20,6 +22,7 @@ class ExperienceFactory(DjangoModelFactory):
     def add_skills_to_experience(self, created: bool, extracted, **kwargs):
         """
         To add experience for CV model.
+
         :param created: if factory calls like `ExperienceFactory.build()`
         :param extracted: if factory calls like `ExperienceFactory.create()` or
         `ExperienceFactory()`

@@ -7,15 +7,17 @@ import logging
 
 from debug_toolbar.settings import PANELS_DEFAULTS
 
-from server.settings.components.common import (BASE_DIR, INSTALLED_APPS,
-                                               MIDDLEWARE)
+from server.settings.components.common import (
+    BASE_DIR,
+    INSTALLED_APPS,
+    MIDDLEWARE,
+)
 
 # Setting the development status:
 
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '0.0.0.0',
 ]
 
 # Static files:
@@ -60,7 +62,7 @@ DEBUG_TOOLBAR_PANELS = PANELS_DEFAULTS + [
 
 # This will make debug toolbar to work with django-csp,
 # since `ddt` loads some scripts from `ajax.googleapis.com`:
-CSP_SCRIPT_SRC = ("'self'", "*.cloudflare.com", "ajax.googleapis.com",)
+CSP_SCRIPT_SRC = ("'self'", "*.cloudflare.com", "ajax.googleapis.com")
 CSP_IMG_SRC = ("'self'", "data:")
 
 
