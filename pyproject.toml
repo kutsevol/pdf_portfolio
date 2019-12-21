@@ -44,7 +44,6 @@ flake8-annotations = "^1.1"
 flake8-broken-line = "^0.1.1"
 flake8-print = "^3.1"
 pep8-naming = "^0.9.1"
-flake8-mypy = "^17.8"
 flake8-docstrings = "^1.5"
 
 [build-system]
