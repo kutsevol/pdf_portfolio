@@ -13,10 +13,13 @@ stages:
     - linter
     - test
 
+before_script:
+  - pip install poetry
+  - poetry export -f requirements.txt --dev > requirements.txt
+  - pip install -r requirements.txt
+
 poetry-check:
     stage: check-reqs
-    before_script:
-      - pip install poetry
     script:
       - poetry check
     tags:
@@ -24,23 +27,13 @@ poetry-check:
 
 flake8:
     stage: linter
-    before_script:
-      - python -m venv venv
-      - source venv/bin/activate
-      - pip install poetry
-      - poetry install
     script:
-      - flake8
+      - invoke flake
     tags:
       - shared
 
 unit-tests:
     stage: test
-    before_script:
-      - python -m venv venv
-      - source venv/bin/activate
-      - pip install poetry
-      - poetry install
     script:
       - invoke test
     tags:
