@@ -4,6 +4,12 @@ image: python:3.7
 
 variables:
   DOCKER_DRIVER: overlay2
+  SECRET_KEY: testkey
+  DB_ENGINE: django.db.backends.sqlite3
+  DB_USER: testuser
+  DB_PASS: testpass
+  DB_HOST: localhost
+  DB_PORT: 5432
 
 services:
   - docker:dind
