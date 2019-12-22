@@ -178,6 +178,14 @@ python-versions = "*"
 version = "2.1.0"
 
 [[package]]
+category = "main"
+description = "Recursive nesting of inline forms for Django Admin"
+name = "django-nested-inline"
+optional = false
+python-versions = "*"
+version = "0.4.0"
+
+[[package]]
 category = "dev"
 description = "Middleware that Prints the number of DB queries to the runserver console."
 name = "django-querycount"
@@ -883,7 +891,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["pathlib2", "contextlib2", "unittest2"]
 
 [metadata]
-content-hash = "205eea11c9b9a7c002089cbd6f5eb4557ae48dc1015be4744e2a63d143540067"
+content-hash = "07b42dec47ef8b476a629bc95ee6a0f852951d3459a1c5500706015be8ec2da3"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -1020,6 +1028,10 @@ django-feature-policy = [
 ]
 django-ipware = [
     {file = "django-ipware-2.1.0.tar.gz", hash = "sha256:a7c7a8fd019dbdc9c357e6e582f65034e897572fc79a7e467674efa8aef9d00b"},
+]
+django-nested-inline = [
+    {file = "django-nested-inline-0.4.0.tar.gz", hash = "sha256:326084bac5086f2e963cb1ffbaacf2d3d95a94ba76a4a8332844cfbb2e291f02"},
+    {file = "django_nested_inline-0.4.0-py2.py3-none-any.whl", hash = "sha256:e5991f09eaa9a02bdba1cec72c2350c8abcc678a53bb9b9f4dc5dbd8bee3b382"},
 ]
 django-querycount = [
     {file = "django-querycount-0.7.0.tar.gz", hash = "sha256:8f5123d78716ff0704f2373e746a7200b8d8417798ce4a99bf2de87e3768f9ce"},

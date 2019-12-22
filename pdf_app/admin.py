@@ -1,6 +1,6 @@
 from django.contrib import admin
-
 from nested_inline.admin import NestedModelAdmin, NestedStackedInline
+
 from pdf_app.models import (
     CV,
     Certification,
