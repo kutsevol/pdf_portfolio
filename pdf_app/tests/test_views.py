@@ -7,13 +7,14 @@ from pdf_app.tests.data.data_views import (
 
 
 @pytest.mark.parametrize("mock_response", bulk_positive_responses)
-def test_positive_view(client, django_user_model, mock_response):
+def test_positive_view(client, django_user_model, mock_response, cv):
     """
     To check positive cases for views.
 
     :param client: pytest fixture for django client
     :param django_user_model: pytest fixture for django user model
     :param mock_response: mock data with positive responses
+    :param cv: fixture to check CV factory data
     """
     username = "admin"
     password = "pass"

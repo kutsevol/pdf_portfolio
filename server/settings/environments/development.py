@@ -7,6 +7,7 @@ import logging
 
 from debug_toolbar.settings import PANELS_DEFAULTS
 
+from server.settings.components import config
 from server.settings.components.common import (
     BASE_DIR,
     INSTALLED_APPS,
@@ -44,10 +45,14 @@ MIDDLEWARE += (
     'querycount.middleware.QueryCountMiddleware',
 )
 
+# Workaround for django-debug-toolbar, use by default TESTING_MODE=False and we
+# will show debug toolbar otherwise TESTING_MODE=True and don't show
+TESTING_MODE = config('TESTING_MODE', cast=bool, default=False)
+
 
 def custom_show_toolbar(request):
     """Only show the debug toolbar to users with the superuser flag."""
-    return True
+    return not TESTING_MODE
 
 
 DEBUG_TOOLBAR_CONFIG = {

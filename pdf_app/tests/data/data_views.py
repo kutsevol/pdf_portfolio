@@ -31,7 +31,7 @@ bulk_positive_responses = [
         check_template=True,
         template_name=CVView.template_name,
         content_encoding="utf-8",
-        content_body="""Email:""",
+        content_body="""Kyiv, Ukraine""",
         content_title="""Artur Kutsevol""",
     ),
     Response(

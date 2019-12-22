@@ -8,7 +8,7 @@ def test(c):
 
     :param c: context variable of invoke
     """
-    c.run("pytest")
+    c.run("TESTING_MODE=True pytest")
 
 
 @task
