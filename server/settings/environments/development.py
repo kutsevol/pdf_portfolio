@@ -7,15 +7,18 @@ import logging
 
 from debug_toolbar.settings import PANELS_DEFAULTS
 
-from server.settings.components.common import (BASE_DIR, INSTALLED_APPS,
-                                               MIDDLEWARE)
+from server.settings.components import config
+from server.settings.components.common import (
+    BASE_DIR,
+    INSTALLED_APPS,
+    MIDDLEWARE,
+)
 
 # Setting the development status:
 
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '0.0.0.0',
 ]
 
 # Static files:
@@ -42,10 +45,14 @@ MIDDLEWARE += (
     'querycount.middleware.QueryCountMiddleware',
 )
 
+# Workaround for django-debug-toolbar, use by default TESTING_MODE=False and we
+# will show debug toolbar otherwise TESTING_MODE=True and don't show
+TESTING_MODE = config('TESTING_MODE', cast=bool, default=False)
+
 
 def custom_show_toolbar(request):
     """Only show the debug toolbar to users with the superuser flag."""
-    return True
+    return not TESTING_MODE
 
 
 DEBUG_TOOLBAR_CONFIG = {
@@ -60,7 +67,7 @@ DEBUG_TOOLBAR_PANELS = PANELS_DEFAULTS + [
 
 # This will make debug toolbar to work with django-csp,
 # since `ddt` loads some scripts from `ajax.googleapis.com`:
-CSP_SCRIPT_SRC = ("'self'", "*.cloudflare.com", "ajax.googleapis.com",)
+CSP_SCRIPT_SRC = ("'self'", "*.cloudflare.com", "ajax.googleapis.com")
 CSP_IMG_SRC = ("'self'", "data:")
 
 

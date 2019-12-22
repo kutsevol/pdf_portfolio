@@ -1,0 +1,46 @@
+---
+
+image: python:3.7
+
+variables:
+  DOCKER_DRIVER: overlay2
+  SECRET_KEY: testkey
+  DB_ENGINE: django.db.backends.sqlite3
+  DB_USER: testuser
+  DB_PASS: testpass
+  DB_HOST: localhost
+  DB_PORT: 5432
+
+services:
+  - docker:dind
+
+stages:
+    - check-reqs
+    - linter
+    - test
+
+before_script:
+  - pip install poetry
+  - poetry export -f requirements.txt --dev > requirements.txt
+  - pip install -r requirements.txt
+
+poetry-check:
+    stage: check-reqs
+    script:
+      - poetry check
+    tags:
+      - shared
+
+flake8:
+    stage: linter
+    script:
+      - invoke flake
+    tags:
+      - shared
+
+unit-tests:
+    stage: test
+    script:
+      - invoke test
+    tags:
+      - shared

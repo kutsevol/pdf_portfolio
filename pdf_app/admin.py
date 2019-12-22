@@ -1,11 +1,21 @@
 from django.contrib import admin
 from nested_inline.admin import NestedModelAdmin, NestedStackedInline
 
-from pdf_app.models import (CV, Certification, Education, Experience, Language,
-                            PersonDetail, Skill, Social)
+from pdf_app.models import (
+    CV,
+    Certification,
+    Education,
+    Experience,
+    Language,
+    PersonDetail,
+    Skill,
+    Social,
+)
 
 
 class SkillInline(NestedStackedInline):
+    """Inline class for Skill."""
+
     model = Skill
     extra = 0
     min_num = 1
@@ -13,6 +23,8 @@ class SkillInline(NestedStackedInline):
 
 
 class SocialInline(NestedStackedInline):
+    """Inline class for Social."""
+
     model = Social
     extra = 0
     min_num = 1
@@ -20,6 +32,8 @@ class SocialInline(NestedStackedInline):
 
 
 class CertificationInline(NestedStackedInline):
+    """Inline class for Certification."""
+
     model = Certification
     extra = 0
     min_num = 1
@@ -27,6 +41,8 @@ class CertificationInline(NestedStackedInline):
 
 
 class EducationInline(NestedStackedInline):
+    """Inline class for Education."""
+
     model = Education
     extra = 0
     min_num = 1
@@ -34,6 +50,8 @@ class EducationInline(NestedStackedInline):
 
 
 class ExperienceInline(NestedStackedInline):
+    """Inline class for Experience."""
+
     model = Experience
     extra = 0
     min_num = 1
@@ -42,6 +60,8 @@ class ExperienceInline(NestedStackedInline):
 
 
 class LanguageInline(NestedStackedInline):
+    """Inline class for Language."""
+
     model = Language
     extra = 0
     min_num = 1
@@ -49,6 +69,8 @@ class LanguageInline(NestedStackedInline):
 
 
 class PersonDetailInline(NestedStackedInline):
+    """Inline class for Person Detail."""
+
     model = PersonDetail
     extra = 0
     min_num = 1
@@ -58,5 +80,7 @@ class PersonDetailInline(NestedStackedInline):
 
 @admin.register(CV)
 class CVAdmin(NestedModelAdmin):
+    """CV class which collected all inline classes."""
+
     inlines = [PersonDetailInline, ExperienceInline, EducationInline,
                CertificationInline, LanguageInline]

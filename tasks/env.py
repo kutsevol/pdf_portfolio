@@ -12,8 +12,8 @@ def create_dot_env(c,
                    domain_name="127.0.0.1",
                    ):
     """
-    Create .env file from template with the ability to change a several
-    parameters
+    Create .env file from template with the ability to change parameters.
+
     :param c: context (invoke variable)
     :param generate_admin_url: create random string for admin path
     (default=False and will be use admin/)
@@ -31,7 +31,7 @@ def create_dot_env(c,
 
     if not rewrite and check_exist_env_file():
         raise FileExistsError(
-            "Check exist version of .env file in config folder"
+            "Check exist version of .env file in config folder",
         )
 
     parse_result = parse()

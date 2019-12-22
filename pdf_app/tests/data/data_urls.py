@@ -12,6 +12,6 @@ valid_resolvers = [
     Resolver(
         path="/pdf/",
         name="pdf",
-        kwargs={}
+        kwargs={},
     ),
 ]

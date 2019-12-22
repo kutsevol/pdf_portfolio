@@ -3,14 +3,19 @@ import secrets
 
 from utils.constants import (
     DB_ENGINES,
+    ENV_LIST_NAMES,
     FULL_PATH_ENV_FILE,
     FULL_PATH_ENV_FILE_TEMPLATE,
-    ENV_LIST_NAMES,
     PROD,
 )
 
 
 def parse():
+    """
+    To get all key-values from template file.
+
+    :return: dict with key and values as default from template file.
+    """
     parse_result = {}
 
     with open(FULL_PATH_ENV_FILE_TEMPLATE) as env_template_file:
@@ -31,19 +36,26 @@ def parse():
 
 
 def dump(parse_data, **kwargs):
+    """
+    Write parsed and updated data to the file.
+
+    :param parse_data: original dict from template
+    :param kwargs: values which should be updated for the new file
+    """
     parse_data.update(set_options(parse_data, **kwargs))
 
     with open(FULL_PATH_ENV_FILE, 'w') as env_file:
         for key, value in parse_data.items():
             if value:
                 env_file.write(
-                    f"{key}={value}\n"
+                    f"{key}={value}\n",
                 )
 
 
 def check_exist_env_file():
     """
-    Check exist .env file
+    Check exist .env file.
+
     :return: bool (True/False)
     """
     return os.path.isfile(FULL_PATH_ENV_FILE)
@@ -51,7 +63,8 @@ def check_exist_env_file():
 
 def set_options(result, **kwargs):
     """
-    To set custom options from command line
+    To set custom options from command line.
+
     :param result: dict (env.template) with env variables
     :param kwargs: parameters from command line
     :return: update dict
